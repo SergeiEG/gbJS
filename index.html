@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*1-ое задание*/
+        let Tc;
+        do {
+            Tc = prompt('Введите сколько градусов по цельсию:');
+        } while (Tc != Number(Tc));
+
+        alert(`Получилось: ${getF(Tc).toFixed(1)} градусов по Фаренгейту.`)
+
+        function getF(a) {
+            let Tf = (9 / 5) * a + 32;
+            return Tf;
+        }
+    </script>
+    <script>
+        /* 2-ое задание*/
+        let name;
+        let admin;
+        name = 'Василий';
+        admin = name;
+        alert(admin);
+    </script>
+</body>
+
+</html>
