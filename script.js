@@ -1,12 +1,6 @@
 'use strict';
 
-//2-ое задание
-
 const blockBasket = document.getElementById('basket');
-blockBasket.style.width = '150px';
-blockBasket.style.height = '150px';
-blockBasket.style.marginTop = '50px';
-blockBasket.style.border = '1px solid black'
 
 function checkBasket() {
     if (basket.productList.length > 0)
@@ -22,7 +16,7 @@ function showBasketMaintenance() {
         blockBasket.innerText = 'Корзина пуста';
 }
 
-let basket = {
+const basket = {
     productList: [],
     countBasketQuantity() {
         return this.productList.reduce((totalQuantity, item) => totalQuantity += item.quantity, 0);
