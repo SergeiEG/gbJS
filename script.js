@@ -1,4 +1,5 @@
 'use strict';
+
 const cartItem = {
     render(good) {
         return `<div class="good">
@@ -62,63 +63,3 @@ const basket = {
 };
 
 basket.init();
-
-
-
-// //3-ее задание
-// const product = [{
-//     name: 'Бананы',
-//     quantity: 1,
-//     price: 200,
-// }, {
-//     name: 'Грушы',
-//     quantity: 1,
-//     price: 150,
-// }, {
-//     name: 'Апельсины',
-//     quantity: 1,
-//     price: 215,
-// }]
-
-// const blockProduct = document.getElementById('catalog');
-// blockProduct.style.width = '150px';
-// blockProduct.style.height = '150px';
-// blockProduct.style.marginTop = '50px';
-// blockProduct.style.border = '1px solid black'
-
-// const banansAdd = document.createElement('button');
-// blockProduct.appendChild(banansAdd);
-// banansAdd.innerHTML = 'Add banana to basket';
-
-// function addBananaToProductList() {
-//     basket.productList.push(product[0]);
-//     showBasketMaintenance();
-// }
-// // banansAdd.onclick = addBananaToProductList;
-// banansAdd.addEventListener('click', addBananaToProductList);
-
-// const orangeAdd = document.createElement('button');
-// orangeAdd.style.marginTop = '30px';
-// blockProduct.appendChild(orangeAdd);
-// orangeAdd.innerHTML = 'Add orange to basket';
-
-// function addOrangeToProductList() {
-//     basket.productList.push(product[2]);
-//     showBasketMaintenance();
-// }
-
-// orangeAdd.addEventListener('click', addOrangeToProductList);
-
-// const pearsAdd = document.createElement('button');
-// pearsAdd.style.marginTop = '30px';
-// blockProduct.appendChild(pearsAdd);
-// pearsAdd.innerHTML = 'Add pears to basket';
-
-// function addPearsToProductList() {
-//     basket.productList.push(product[1]);
-//     showBasketMaintenance();
-// }
-
-// pearsAdd.addEventListener('click', addPearsToProductList);
-
-// showBasketMaintenance();
