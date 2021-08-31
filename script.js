@@ -17,26 +17,27 @@ const cartItem = {
 const basket = {
     blockBasket: null,
     cartItem,
+    basketBtn: null,
     productList: [],
 
     init() {
         this.blockBasket = document.querySelector('.basket');
-        const basketBtn = document.createElement('button');
-        this.blockBasket.appendChild(basketBtn);
-        basketBtn.classList.add('basket-btn')
-        basketBtn.addEventListener('click', this.clear.bind(this));
-        basketBtn.innerHTML = 'Очистить корзину';
+        this.basketBtn = document.createElement('button');
+        this.blockBasket.appendChild(this.basketBtn);
+        this.basketBtn.classList.add('basket-btn');
+        this.basketBtn.addEventListener('click', this.clear.bind(this));
+        this.basketBtn.innerHTML = 'Очистить корзину';
 
-        this.render();
+        this.render(this.productList);
     },
-    render() {
-        if (this.productList.length) {
-            this.productList.forEach(good => {
+    render(arr) {
+        if (arr.length) {
+            arr.forEach(good => {
                 this.blockBasket.insertAdjacentHTML('afterbegin', this.cartItem.render(good));
             });
             this.blockBasket.insertAdjacentHTML('beforeend', `В коризе: ${this.countBasketQuantity()} товара на сумму ${this.countBasketPrice()} рублей.`);
         } else {
-            this.blockBasket.insertAdjacentHTML('afterbegin', 'Корзина пуста');
+            this.blockBasket.textContent = 'Корзина пуста';
         }
     },
     countBasketQuantity() {
@@ -49,7 +50,13 @@ const basket = {
     },
     clear() {
         this.productList = [];
-        this.render();
+        this.clearRender();
+        this.blockBasket.textContent = 'Корзина пуста';
+    },
+    clearRender() {
+        let arr = [];
+        this.render(arr);
+        this.blockBasket.textContent = '';
     },
 };
 
@@ -74,29 +81,29 @@ const catalog = {
     catalogBlock: null,
     catalogItem,
     productList: [{
-        id:1,
+        id: 1,
         image: './img/banana.png',
         name: 'Бананы',
         quantity: 5,
         price: 200,
     }, {
-        id:2,
+        id: 2,
         image: './img/pear.png',
         name: 'Груши',
         quantity: 4,
         price: 150,
     }, {
-        id:3,
+        id: 3,
         image: './img/orange.png',
         name: 'Апельсины',
         quantity: 7,
         price: 215,
-    },],
+    }, ],
 
     init() {
         this.catalogBlock = document.querySelector('.catalog');
         this.catalogBlock.addEventListener('click', (event) => {
-            if(event.target.tagName !== 'BUTTON') return;
+            if (event.target.tagName !== 'BUTTON') return;
             this.addObjToCart(event.target.dataset.id);
         });
 
@@ -105,20 +112,20 @@ const catalog = {
 
     render() {
         this.productList.forEach(good => {
-                this.catalogBlock.insertAdjacentHTML('afterbegin', this.catalogItem.render(good));
-            });
+            this.catalogBlock.insertAdjacentHTML('afterbegin', this.catalogItem.render(good));
+        });
     },
 
     findProduct(key) {
-        for(let i = 0; i < this.productList.length; i ++){
+        for (let i = 0; i < this.productList.length; i++) {
             let arr = Object.values(this.productList[i]);
-            if(arr.includes(Number(key))) return this.productList[i];
-            else continue;
+            if (arr.includes(Number(key))) return this.productList[i];
         }
     },
     addObjToCart(key) {
         basket.productList.push(this.findProduct(key));
-        basket.render();
+        basket.clearRender();
+        basket.init();
     },
 }
 catalog.init();
