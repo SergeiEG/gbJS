@@ -28,11 +28,11 @@ const basket = {
         this.basketBtn.addEventListener('click', this.clear.bind(this));
         this.basketBtn.innerHTML = 'Очистить корзину';
 
-        this.render(this.productList);
+        this.render();
     },
-    render(arr) {
-        if (arr.length) {
-            arr.forEach(good => {
+    render() {
+        if (this.productList.length) {
+            this.productList.forEach(good => {
                 this.blockBasket.insertAdjacentHTML('afterbegin', this.cartItem.render(good));
             });
             this.blockBasket.insertAdjacentHTML('beforeend', `В коризе: ${this.countBasketQuantity()} товара на сумму ${this.countBasketPrice()} рублей.`);
@@ -50,12 +50,9 @@ const basket = {
     },
     clear() {
         this.productList = [];
-        this.clearRender();
-        this.blockBasket.textContent = 'Корзина пуста';
+        this.render();
     },
     clearRender() {
-        let arr = [];
-        this.render(arr);
         this.blockBasket.textContent = '';
     },
 };
