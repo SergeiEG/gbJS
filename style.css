@@ -1,0 +1,37 @@
+* {
+    font-family: sans-serif;
+}
+
+.basket {
+    border: 1px solid #000;
+    padding: 10px 10px;
+    margin: 30px 0px;
+}
+
+.good {
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    background: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+.basket-btn {
+    height: 50px;
+    margin: 10px 10px;
+    padding: 5px 5px;
+}
+
+.catalog {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px;
+}
+
+.catalog-btn {
+    margin: 30px 0;
+    padding: 10px 10px;
+}
