@@ -22,6 +22,7 @@ const basket = {
 
     init() {
         this.blockBasket = document.querySelector('.basket');
+        this.blockBasket.textContent = '';
         this.basketBtn = document.createElement('button');
         this.blockBasket.appendChild(this.basketBtn);
         this.basketBtn.classList.add('basket-btn');
@@ -51,9 +52,6 @@ const basket = {
     clear() {
         this.productList = [];
         this.render();
-    },
-    clearRender() {
-        this.blockBasket.textContent = '';
     },
 };
 
@@ -121,7 +119,6 @@ const catalog = {
     },
     addObjToCart(key) {
         basket.productList.push(this.findProduct(key));
-        basket.clearRender();
         basket.init();
     },
 }
