@@ -53,6 +53,10 @@ td.cell {
     background: #00d021;
 }
 
+.obstruction {
+    background: gray;
+}
+
 .snakeBody {
     background: #e5e5e5;
 }
