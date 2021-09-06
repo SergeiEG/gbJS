@@ -210,15 +210,17 @@ const snake = {
     getNextHeadPoint() {
         const firstPoint = this.getBody()[0];
 
+        console.log(firstPoint);
+
         switch (this.direction) {
             case 'up':
-                return { x: firstPoint.x, y: firstPoint.y - 1 };
+                return firstPoint.y > 0 ? { x: firstPoint.x, y: firstPoint.y - 1 } : { x: firstPoint.x, y: config.getColsCount() };
             case 'right':
-                return { x: firstPoint.x + 1, y: firstPoint.y };
+                return firstPoint.x < config.getColsCount() ? { x: firstPoint.x + 1, y: firstPoint.y } : { x: 0, y: firstPoint.y };
             case 'down':
-                return { x: firstPoint.x, y: firstPoint.y + 1 };
+                return firstPoint.y < config.getColsCount() ? { x: firstPoint.x, y: firstPoint.y + 1 } : { x: firstPoint.x, y: 0 };
             case 'left':
-                return { x: firstPoint.x - 1, y: firstPoint.y };
+                return firstPoint.x > 0 ? { x: firstPoint.x - 1, y: firstPoint.y } : { x: config.getColsCount(), y: firstPoint.y };
         }
     },
 };
@@ -450,11 +452,7 @@ const game = {
     canMakeStep() {
         const nextHeadPoint = this.snake.getNextHeadPoint();
 
-        return !this.snake.isOnPoint(nextHeadPoint) &&
-            nextHeadPoint.x < this.config.getColsCount() &&
-            nextHeadPoint.y < this.config.getRowsCount() &&
-            nextHeadPoint.x >= 0 &&
-            nextHeadPoint.y >= 0;
+        return !this.snake.isOnPoint(nextHeadPoint);
     }
 };
 
